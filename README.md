@@ -28,10 +28,9 @@
 
 d维正态分布概率密度函数：
 
-$$
-N(X|\mu,\Sigma) = \frac{1}{(2\pi)^\frac{d}{2}|\Sigma|^\frac{1}{2}}e^{-\frac{1}{2}(X-\mu)^T\Sigma^{-1}(X-\mu)}N(X|\mu,\Sigma) = \frac{1}{(2\pi)^\frac{d}{2}|\Sigma|^\frac{1}{2}}e^{-\frac{1}{2}(X-\mu)^T\Sigma^{-1}(X-\mu)}
-$$
-其中，X是d维向量，$\mu$是d维的均值，$$\Sigma$$是d*d的协方差矩阵。
+$$N(X|\mu,\Sigma) = \frac{1}{(2\pi)^\frac{d}{2}|\Sigma|^\frac{1}{2}}e^{-\frac{1}{2}(X-\mu)^T\Sigma^{-1}(X-\mu)}$$
+
+其中，X是d维向量，$ \mu $是d维的均值， $$\Sigma$$是d*d的协方差矩阵。
 
 正态分布的密度函数值（概率）与按其分布采样的样本分布（频率）有着对应关系。
 
@@ -40,9 +39,9 @@ $$
 ##### 2.2混合高斯分布
 
 定义一个将$$K$$个正态分布加权求和形成的分布，各个正态分布其概率密度函数：
-$$
-M(X|\pi,\mu,\Sigma) = \sum_{k=1}^K\pi_kN(X|\mu_k,\Sigma_k)
-$$
+
+$$M(X|\pi,\mu,\Sigma) = \sum_{k=1}^K\pi_kN(X|\mu_k,\Sigma_k)$$
+
 其中$$N(X|\mu_k,\Sigma_k)$$是2.1中前述的正态分布概率密度函数，$$\pi_k$$是每个正态分布成分的权重，应满足约束条件$$\sum_{k=1}^K\pi_k=1$$
 $$\pi$$表示$$\pi_k, \ k=1,2,...,K$$整体。$$\mu,\Sigma$$同理。
 
