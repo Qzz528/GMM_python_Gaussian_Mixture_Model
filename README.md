@@ -30,7 +30,7 @@ d维正态分布概率密度函数：
 
 $$N(X|\mu,\Sigma) = \frac{1}{(2\pi)^\frac{d}{2}|\Sigma|^\frac{1}{2}}e^{-\frac{1}{2}(X-\mu)^T\Sigma^{-1}(X-\mu)}$$
 
-其中，X是d维向量，$ \mu $是d维的均值， $$\Sigma$$是d*d的协方差矩阵。
+其中， $X$是d维向量， $\mu$是d维的均值， $\Sigma$是d*d的协方差矩阵。
 
 正态分布的密度函数值（概率）与按其分布采样的样本分布（频率）有着对应关系。
 
@@ -38,96 +38,84 @@ $$N(X|\mu,\Sigma) = \frac{1}{(2\pi)^\frac{d}{2}|\Sigma|^\frac{1}{2}}e^{-\frac{1}
 
 ##### 2.2混合高斯分布
 
-定义一个将$$K$$个正态分布加权求和形成的分布，各个正态分布其概率密度函数：
+定义一个将 $K$个正态分布加权求和形成的分布，各个正态分布其概率密度函数：
 
 $$M(X|\pi,\mu,\Sigma) = \sum_{k=1}^K\pi_kN(X|\mu_k,\Sigma_k)$$
 
-其中$$N(X|\mu_k,\Sigma_k)$$是2.1中前述的正态分布概率密度函数，$$\pi_k$$是每个正态分布成分的权重，应满足约束条件$$\sum_{k=1}^K\pi_k=1$$
-$$\pi$$表示$$\pi_k, \ k=1,2,...,K$$整体。$$\mu,\Sigma$$同理。
+其中 $N(X|\mu_k,\Sigma_k)$是2.1中前述的正态分布概率密度函数， $\pi_k$是每个正态分布成分的权重，应满足约束条件 $\sum_{k=1}^K \pi_k=1$
+
+
+ $\pi$表示 $\pi_k, \ k=1,2,...,K$整体。 $\mu,\Sigma$同理。
 
 混合多个正态分布成分的目的是用多个正态分布去近似一个复杂的分布，如上例，两个正态分布可以构造出一个双峰的分布。
 
 ![image](/pic/samp&pdf-1d.png)
 
 按上图，混合高斯分布的概率密度值（概率）也与按混合方式对正态分布采样的样本分布有着对应关系。
-混合方式采样时$$\pi_k$$为，选择按正态分布$$N(X|\mu_k,\Sigma_k)$$进行采样的概率。
+
+混合方式采样时 $\pi_k$为，选择按正态分布 $N(X|\mu_k,\Sigma_k)$进行采样的概率。
 
 ##### 2.3正态分布（高斯分布）参数估计
 
-2.1中，已知正态分布的参数$$\mu,\Sigma$$可获得概率密度函数$$N(X|\mu,\Sigma)$$，但实际往往是根据一系列样本数据（n个样本）$$X_1,X_2,...,Xn$$来反向推算（估计）正态分布参数$$\mu,\Sigma$$。
-从结果上来看，$$\mu$$的估计为这组数据的均值，$$\Sigma$$的估计为这组数据的协方差矩阵。
+2.1中，已知正态分布的参数 $\mu,\Sigma $可获得概率密度函数 $N(X|\mu,\Sigma) $，但实际往往是根据一系列样本数据（n个样本） $X_1,X_2,...,Xn $来反向推算（估计）正态分布参数 $\mu,\Sigma $。
 
-估计的原理为极大似然估计，此时一系列数据$$X_1,X_2,...,Xn$$为已知，相当于要挑选适当的$$\mu,\Sigma$$，使得此$$\mu,\Sigma$$参数值的正态分布下，取到一系列样本数据$$X_1,X_2,...,X_n$$（目前的既定结果）的概率最大，即最大化$$\mathcal{P}(\mu,\Sigma) = \prod_{i=1}^nN(X_i|\mu,\Sigma)$$
+从结果上来看， $\mu $的估计为这组数据的均值， $\Sigma $的估计为这组数据的协方差矩阵。
+
+估计的原理为极大似然估计，此时一系列数据 $X_1,X_2,...,Xn $为已知，相当于要挑选适当的 $\mu,\Sigma $，使得此 $\mu,\Sigma $参数值的正态分布下，取到一系列样本数据 $X_1,X_2,...,X_n $（目前的既定结果）的概率最大，即最大化 
+
+$$\mathcal{P}(\mu,\Sigma) = \prod_{i=1}^nN(X_i|\mu,\Sigma)$$
 
 
-求取$$\mathcal{P}(\mu,\Sigma)$$极值时的$$\mu,\Sigma$$值（即极值点）
+求取 $\mathcal{P}(\mu,\Sigma) $极值时的 $\mu,\Sigma $值（即极值点）
 
-可转变为求$$\ln\mathcal{P}$$的极值点，
+可转变为求 $\ln\mathcal{P} $的极值点，
 
-进而转变为求$$\ln \mathcal{P}$$的对$$\mu,\Sigma$$偏导数的零点。
+进而转变为求 $\ln \mathcal{P} $的对 $\mu,\Sigma $偏导数的零点。即方程
 
-即方程
-$$
-\frac{\part \ln\mathcal{P}}{\part \mu}=0,\ \frac{\part\ln \mathcal{P}}{\part \Sigma}=0
-$$
+$$\frac{\partial \ln\mathcal{P}}{\partial \mu}=0,\ \frac{\partial\ln \mathcal{P}}{\partial \Sigma}=0$$
 
 的解。
 
 
-对于d维数据$$X_i$$，求解结果为：
-$$
-\mu = (\mu_1,\mu_2,...,\mu_d)\\
-\mu_j=\frac{1}{n}\sum_{i=1}^nX_{i,j}.\\
-j=1,2,...,d.\\
-$$
+对于d维数据 $X_i $，求解结果为：
 
-均值为d维，$$X_{i,j}$$表示第i个样本第j维度的数值.$$\mu_j$$表示所有样本第j维度的均值。
+$$\mu = (\mu_1,\mu_2,...,\mu_d).\ \ \ \mu_j=\frac{1}{n}\sum_{i=1}^nX_{i,j}.\ \ \  j=1,2,...,d.$$
 
-$$
-\Sigma = [a_{r,c}]\\
-a_{r,c}=\frac{1}{n}\sum_{i=1}^n (X_{i,r}-\mu_r)(X_{i,c}-\mu_c)\\
-r=1,2,...,d.\\
-c=1,2,...,d.
-$$
+均值为d维， $X_{i,j} $表示第i个样本第j维度的数值. $\mu_j $表示所有样本第j维度的均值。
 
-协方差矩阵为d*d矩阵，$$a_{r,c}$$表示协方差矩阵第r行第c列的值。
-$$X_{i,r}$$表示第i个样本第r维度的数值，$$\mu_r$$表示所有样本第r维度的均值。当r为c时同理。
+$$\Sigma = [a_{r,c}].\ \ \ a_{r,c}=\frac{1}{n}\sum_{i=1}^n (X_{i,r}-\mu_r)(X_{i,c}-\mu_c). \ \ \ r=1,2,...,d.\ \ \ c=1,2,...,d.$$
+
+协方差矩阵为d*d矩阵， $a_{r,c} $表示协方差矩阵第r行第c列的值。
+
+ $X_{i,r} $表示第i个样本第r维度的数值， $\mu_r $表示所有样本第r维度的均值。当r为c时同理。
 
 
+##### 2.4混合高斯分布参数估计
 
+在2.2中高斯混合分布的 $K $个成分 $N(X|\mu_k,\Sigma_k) $和权重 $\pi_k $为已知。
 
-##### 2.4混合高斯分布
+目前要根据数据 $X_1,X_2,...,X_n $估计各个高斯成分的参数 $\mu_k,\Sigma_k $和该高斯成分的权重 $\pi_k, \ \ k=1,2,...,K $.
 
-同2.3，2.2中高斯混合分布的$$K$$个成分$$N(X|\mu_k,\Sigma_k)$$和权重$$\pi_k$$为已知。
+混合高斯分布与正态分布的参数估计思路同理，对于已有的样本数据 $X_1,X_2,...,X_n $。参数为 $\pi,\mu,\Sigma $或者说参数为 $\pi_k, \mu_k,\Sigma_k,\ k=1,2,...K. $的混合高斯分布，取到全部样本值 $X_1,X_2,...,X_n $的概率为：
 
-目前要根据数据$$X_1,X_2,...,X_n$$估计各个高斯成分的参数$$\mu_k,\Sigma_k$$和该高斯成分的权重$$\pi_k, \ \ k=1,2,...,K$$.
+$$\mathcal{P}=\prod_{i=1}^N M(X_i|\pi,\mu,\Sigma) = \prod_{i=1}^N \sum_{k=1}^K\pi_kN(X_i|\mu_k,\Sigma_k)$$
 
-混合高斯分布与正态分布的参数估计思路同理，对于已有的样本数据$$X_1,X_2,...,X_n$$。参数为$$\pi,\mu,\Sigma$$或者说参数为$$\pi_k, \mu_k,\Sigma_k,\ k=1,2,...K.$$的混合高斯分布，取到全部样本值$$X_1,X_2,...,X_n$$的概率为：
-$$
-\mathcal{P}=\prod_{i=1}^N M(X_i|\pi,\mu,\Sigma) = \prod_{i=1}^N \sum_{k=1}^K\pi_kN(X_i|\mu_k,\Sigma_k)
-$$
+仍是极大似然估计的思想，将 $\pi_k, \mu_k,\Sigma_k,\ k=1,2,...K. $视为参数。样本值 $X_1,X_2,...,X_n $视为已知。求使得 $\mathcal{P} $值最大的 $\pi_k, \mu_k,\Sigma_k,\ k=1,2,...K. $，即求$\mathcal{P} $的极值点。
 
-仍然是极大似然估计的思想，将$$\pi_k, \mu_k,\Sigma_k,\ k=1,2,...K.$$视为参数。样本值$$X_1,X_2,...,X_n$$视为已知。求使得
-$$\mathcal{P}$$值最大的$$\pi_k, \mu_k,\Sigma_k,\ k=1,2,...K.$$
+同2.3思路，将求 $\mathcal{P} $的极值点，转变为求 $\ln\mathcal{P} $极值点。
 
-同2.3，也即是求$$\mathcal{P}$$的极值点，转变为求$$\ln\mathcal{P}$$极值点。
+因为$\ln\mathcal{P} $中含有的 $\pi_k $是权重，需要满足约束条件 $\sum_{k=1}^K\pi_k=1 $。根据拉格朗日乘子法，将有约束的优化问题 $\ln\mathcal{P} $变为无约束 $\mathcal{F} = \ln\mathcal{P} + \lambda(\sum_{k=1}^K\pi_k-1) $。
 
-化简有$$\ln\mathcal{P}=\sum_{i=1}^N\ln \sum_{k=1}^K\pi_kN(X_i|\mu_k,\Sigma_k)$$
+因此求 $\ln\mathcal{P} $极值点问题，
 
-此处因为$$\pi_k$$是权重，需要满足约束条件$$\sum_{k=1}^K\pi_k=1$$。根据拉格朗日乘子法，将有约束的优化问题$$\ln\mathcal{P}$$变为无约束$$\mathcal{F} = \ln\mathcal{P} + \lambda(\sum_{k=1}^K\pi_k-1)$$。
+又转变为求 $\mathcal{F} $极值点，
 
-此处求$$\ln\mathcal{P}$$极值点问题，
-
-转变为求$$\mathcal{F}$$极值点，
-
-同2.1，转变为求$$\mathcal{F}$$偏导数零点问题。即：
+同2.3思路，转变为求 $\mathcal{F} $偏导数零点问题。即：
 
 根据方程
-$$
-\frac{\part \mathcal{F}}{\part \mu_k} = 0\ ,\  \frac{\part \mathcal{F}}{\part \Sigma_k}=0\ ,\ \frac{\part \mathcal{F}}{\part \pi_k}=0\\
-k=1,2,...,K.
-$$
-求解$$\pi_k, \mu_k,\Sigma_k,\ k=1,2,...K.$$
+$$\frac{\part \mathcal{F}}{\part \mu_k} = 0\ ,\  \frac{\part \mathcal{F}}{\part \Sigma_k}=0\ ,\ \frac{\part \mathcal{F}}{\part \pi_k}=0.\ \ \ k=1,2,...,K.$$
+
+求解 $\pi_k, \mu_k,\Sigma_k,\ k=1,2,...K. $
 
 
 ##### 2.5 EM迭代
