@@ -4,19 +4,19 @@
 
 求解一维混合高斯分布最终结果图
 （柱状图为数据分布，曲线为所求混合高斯分布密度函数及各成分密度函数）
-![train-1d](pic\train-1d.png)
+![image](pic\train-1d.png)
 
 
 求得的一维高斯分布概率密度曲线，以及其采样的分布
-![samp&pdf-1d](pic\samp&pdf-1d.png)
+![image](pic\samp&pdf-1d.png)
 
 
 求解二维混合高斯分布最终结果图
 （散点图为二维数据，曲线为所求混合高斯分布各成分密度函数等高线图）
-![train-2d](pic\train-2d.png)
+![image](pic\train-2d.png)
 
 
 求得的一维高斯分布概率密度热力图，以及其采样的分布
-![samp-2d](pic\samp-2d.png)
+![image](pic\samp-2d.png)
 
-![pdf-2d](pic\pdf-2d.png)
+![image](pic\pdf-2d.png)
