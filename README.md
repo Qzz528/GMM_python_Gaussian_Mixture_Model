@@ -103,7 +103,7 @@ $$\mathcal{P}=\prod_{i=1}^N M(X_i|\pi,\mu,\Sigma) = \prod_{i=1}^N \sum_{k=1}^K\p
 因此求 $\ln\mathcal{P} $极值点问题，又转变为求 $\mathcal{F} $极值点，同2.3思路，转变为求 $\mathcal{F} $偏导数零点问题。即：
 
 根据方程
-$$\frac{\part \mathcal{F}}{\part \mu_k} = 0\ ,\  \frac{\part \mathcal{F}}{\part \Sigma_k}=0\ ,\ \frac{\part \mathcal{F}}{\part \pi_k}=0.\ \ \ k=1,2,...,K.$$
+$$\frac{\partial \mathcal{F}}{\partial \mu_k} = 0\ ,\  \frac{\partial \mathcal{F}}{\partial \Sigma_k}=0\ ,\ \frac{\partial \mathcal{F}}{\partial \pi_k}=0.\ \ \ k=1,2,...,K.$$
 
 求解 $\pi_k, \mu_k,\Sigma_k,\ k=1,2,...K. $
 
@@ -112,7 +112,7 @@ $$\frac{\part \mathcal{F}}{\part \mu_k} = 0\ ,\  \frac{\part \mathcal{F}}{\part 
 
 在单一高斯分布问题中（如2.3），求解偏导方程时问题已经结束，但2.4中的偏导等式求解复杂，难以直接求解。
 将三组等式
-$$\frac{\part \mathcal{F}}{\part \mu_k} = 0\ ,\  \frac{\part \mathcal{F}}{\part \Sigma_k}=0\ ,\ \frac{\part \mathcal{F}}{\part \pi_k}=0.\ \ \ k=1,2,...,K.$$
+$$\frac{\partial \mathcal{F}}{\partial \mu_k} = 0\ ,\  \frac{\partial \mathcal{F}}{\partial \Sigma_k}=0\ ,\ \frac{\partial \mathcal{F}}{\partial \pi_k}=0.\ \ \ k=1,2,...,K.$$
 中化简结果中一个经常出现的项定义为 $\gamma $，有：
 
 $$\gamma_{i,k} = \frac{\pi_kN(X_i|\mu_k,\Sigma_k)}{\sum_{s=1}^K\pi_sN(X_i|\mu_s,\Sigma_s)}$$
@@ -121,7 +121,7 @@ $$\gamma_{i,k} = \frac{\pi_kN(X_i|\mu_k,\Sigma_k)}{\sum_{s=1}^K\pi_sN(X_i|\mu_s,
 
 通过 $\gamma_{i,k} $代换，三组原始等式
 
-$$\frac{\part \mathcal{F}}{\part \mu_k} = 0\ ,\  \frac{\part \mathcal{F}}{\part \Sigma_k}=0\ ,\ \frac{\part \mathcal{F}}{\part \pi_k}=0.$$
+$$\frac{\partial \mathcal{F}}{\partial \mu_k} = 0\ ,\  \frac{\partial \mathcal{F}}{\partial \Sigma_k}=0\ ,\ \frac{\partial \mathcal{F}}{\partial \pi_k}=0.$$
 
 变形为
 
@@ -138,7 +138,7 @@ EM算法迭代方式为
 1）先预设一组值 $\pi_k, \mu_k,\Sigma_k. \ \ k=1,2,...K. $
 
 2）利用预设的 $\pi_k, \mu_k,\Sigma_k $求出所有样本对应所有类别的概率：
-$$\gamma_{i,k} = \frac{\pi_kN(X_i|\mu_k,\Sigma_k)}{\sum_{s=1}^K\pi_sN(X_i|\mu_s,\Sigma_s)}.\ \ \i=1,2,...n.\\ k=1,2,..,K.$$
+$$\gamma_{i,k} = \frac{\pi_kN(X_i|\mu_k,\Sigma_k)}{\sum_{s=1}^K\pi_sN(X_i|\mu_s,\Sigma_s)}.\ \ \ i=1,2,...n.\\ k=1,2,..,K.$$
 
 3）利用2）中求得的 $\gamma_{i,k},\ \ i=1,2,...n.\ \ k=1,2,..,K. $求（或者说更新） $\pi_k, \mu_k,\Sigma_k $：
 
